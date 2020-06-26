@@ -4,6 +4,7 @@ import time
 img1 = "1.png"
 img2 = "2.png"
 
+startIndex = 0
 cycles = 1
 
 a = [0.80, 0.80, 0.80, 1.00, 1.00, 1.00, 1.20, 1.20, 1.20]
@@ -15,100 +16,51 @@ time.sleep(0.1)
 print("Successful load")
 
 # while True:
+#     input("Press enter when the mouse is in the desired location")
 #     print(pyautogui.position())
  
-pyautogui.FAILSAFE = True # 1070, 380
-
-
-
-pyautogui.moveTo(img1x, img1y)
-
-
-
-
-cycles = 0
-cycles = int(input("Input how many cycles to buy: "))
-
-input("Press enter when the mouse is on the item in the store")
-# a = pyautogui.position()
-# # print(pyautogui.position())
-# img1x = a[0]
-# img1y = a[1]
-print(str(img1x) + " " + str(img2x))
+pyautogui.FAILSAFE = True 
 
 print("Starting in 5 seconds...")
 time.sleep(5) 
 
-foundPos = False
+for i in range(startIndex, cycles):
+    start_time = time.time() # Save the start time for tracking time elapsed
 
-for o in range(0,cycles):
-    start_time = time.time()
-
-    pyautogui.moveTo(img1x, img1y)
-
-    time.sleep(0.05)
-
-    pyautogui.click(button='right')
-
-    pyautogui.moveTo(10,500)
-
-    time.sleep(0.05)
-
-    pyautogui.moveTo(1070, 380)
-    time.sleep(0.07)
-    pyautogui.click(button='left', clicks=1000, interval=0.13343567)
-
-    time.sleep(0.02)
-
-    pyautogui.press('esc')
-    time.sleep(0.05)
-    pyautogui.press('t')
-    time.sleep(0.05)
-    pyautogui.write('/sbmenu')
+    # Inputing the a, b, q values
+    time.sleep(0.1)
+    pyautogui.moveTo(989, 508) # move to q[0]
+    time.sleep(0.1)
+    pyautogui.click(button='left')
+    time.sleep(0.5)
+    pyautogui.hotkey('ctrl', 'a') # ctrl + a
+    time.sleep(0.2)
+    pyautogui.write(str(q[i])) # q[0]
+    time.sleep(3) # Do not update volume
+    pyautogui.press('enter')
+    time.sleep(5)
+    pyautogui.press('right')
     time.sleep(0.1)
     pyautogui.press('enter')
-    time.sleep(0.5)
 
-
-    pyautogui.moveTo(960, 440)
+    time.sleep(0.3)
+    pyautogui.moveTo(1127, 578) # move to Q
     time.sleep(0.1)
     pyautogui.click(button='left')
-    time.sleep(0.01)
-    pyautogui.moveTo(10,500)
-    time.sleep(0.1)
-    
-    pyautogui.moveTo(1120, 330)
-    time.sleep(0.1)
-    pyautogui.click(button='left', clicks=30, interval=0.0403343567)
-
-    time.sleep(0.05)
-    pyautogui.press('e')        
-    
-    time.sleep(0.05)
-
-    time.sleep(0.05)
-    pyautogui.press('t')
-    time.sleep(0.05)
-    pyautogui.write('/sbmenu')
-    time.sleep(0.1)
+    time.sleep(0.5)
+    pyautogui.hotkey('ctrl', 'a') # ctrl + a
+    time.sleep(0.2)
+    pyautogui.write("q0*(B/q[1])^" + str(a[i]) + "/(L/q[2])^" + str(b[i]) + "") # b and a
+    time.sleep(3) # Update Volume
     pyautogui.press('enter')
-    time.sleep(0.5)
-    pyautogui.moveTo(1125, 385)
-    time.sleep(0.25)
-    pyautogui.click(button='left')
-    time.sleep(0.20)
-    pyautogui.moveTo(745, 810)
-    pyautogui.keyDown('shift')
-    time.sleep(0.05)
-    pyautogui.click(button='left')
-    time.sleep(0.05)
-    pyautogui.keyUp('shift')
-    pyautogui.press('e') 
+    time.sleep(5)
+    pyautogui.press('enter')
+    time.sleep(40) 
 
-    time.sleep(0.15)
-    pyautogui.click(button='right')
-    time.sleep(0.25)
+    time.sleep(0.3)
+    pyautogui.moveTo(23, 135) # Volume view tab
+    time.sleep(0.1)
+    pyautogui.click(button='left')
 
     print("Cycle " + str(o+1))
     print("--- %s seconds ---" % (time.time() - start_time))
-
