@@ -1,11 +1,10 @@
 import pyautogui
 import time
 
-img1 = "1.png"
-img2 = "2.png"
+img1 = "MapComputationDone.png"
 
 startIndex = 0
-cycles = 1
+cycles = 9
 
 a = [0.80, 0.80, 0.80, 1.00, 1.00, 1.00, 1.20, 1.20, 1.20]
 b = [0.40, 0.80, 1.20, 0.40, 0.80, 1.20, 0.40, 0.80, 1.20]
@@ -61,6 +60,53 @@ for i in range(startIndex, cycles):
     pyautogui.moveTo(23, 135) # Volume view tab
     time.sleep(0.1)
     pyautogui.click(button='left')
+
+    time.sleep(5)
+    pyautogui.moveTo(111, 114) # Compute rendering grid
+    time.sleep(0.1)
+    pyautogui.click(button='left')
+    time.sleep(20)
+
+    pyautogui.moveTo(23, 224) # Image view tab
+    time.sleep(0.1)
+    pyautogui.click(button='left')
+    time.sleep(5)
+
+    pyautogui.moveTo(348, 197) # [RCP+CCP] dropdown
+    time.sleep(0.1)
+    pyautogui.click(button='left')
+    time.sleep(3)
+
+    pyautogui.moveTo(327, 305) # T_I dropdown choice
+    time.sleep(0.1)
+    pyautogui.click(button='left')
+    time.sleep(2)
+
+    pyautogui.moveTo(1061, 56) # Synthetic Map Computation
+    time.sleep(0.1)
+    pyautogui.click(button='left')
+    time.sleep(5)
+    pyautogui.press('right')
+    time.sleep(0.1)
+    pyautogui.press('enter')
+    time.sleep(300)
+
+    while True: # Check whether map computation finished
+        l = list(pyautogui.locateAllOnScreen(img1))
+        if(len(l) > 0): # If on screen
+            time.sleep(0.05)
+            break
+
+    # Save the .map file
+    time.sleep(2)
+    pyautogui.moveTo(201, 121) # Save Maps to File
+    time.sleep(0.1)
+    pyautogui.click(button='left')
+    time.sleep(5)
+    pyautogui.write("a" + str(a[i]) + "-b" + str(b[i]) + "-q" + str(q[i]))
+    time.sleep(0.5)
+    pyatuogui.press('enter')
+    time.sleep(5)
 
     print("Cycle " + str(o+1))
     print("--- %s seconds ---" % (time.time() - start_time))
