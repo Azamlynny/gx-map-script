@@ -65,7 +65,7 @@ for i in range(startIndex, cycles):
     pyautogui.moveTo(111, 114) # Compute rendering grid
     time.sleep(0.1)
     pyautogui.click(button='left')
-    time.sleep(20)
+    time.sleep(10)
 
     pyautogui.moveTo(23, 224) # Image view tab
     time.sleep(0.1)
@@ -104,9 +104,9 @@ for i in range(startIndex, cycles):
     pyautogui.click(button='left')
     time.sleep(5)
     pyautogui.write("a" + str(a[i]) + "-b" + str(b[i]) + "-q" + str(q[i]))
-    time.sleep(0.5)
-    pyatuogui.press('enter')
+    time.sleep(1)
+    pyautogui.press('enter')
     time.sleep(5)
 
-    print("Cycle " + str(o+1))
+    print("Cycle " + str(i+1))
     print("--- %s seconds ---" % (time.time() - start_time))
