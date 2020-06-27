@@ -3,8 +3,7 @@ import time
 
 img1 = "MapComputationDone.png"
 
-startIndex = 0
-cycles = 9
+startIndex = 4 # Which index in the array to start at
 
 a = [0.80, 0.80, 0.80, 1.00, 1.00, 1.00, 1.20, 1.20, 1.20]
 b = [0.40, 0.80, 1.20, 0.40, 0.80, 1.20, 0.40, 0.80, 1.20]
