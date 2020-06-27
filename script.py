@@ -23,7 +23,7 @@ pyautogui.FAILSAFE = True
 print("Starting in 5 seconds...")
 time.sleep(5) 
 
-for i in range(startIndex, cycles):
+for i in range(startIndex, len(q)):
     start_time = time.time() # Save the start time for tracking time elapsed
 
     # Inputing the a, b, q values
