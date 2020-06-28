@@ -3,11 +3,11 @@ import time
 
 img1 = "MapComputationDone.png"
 
-startIndex = 4 # Which index in the array to start at
+startIndex = 0 # Which index in the array to start at
 
-a = [0.80, 0.80, 0.80, 1.00, 1.00, 1.00, 1.20, 1.20, 1.20]
-b = [0.40, 0.80, 1.20, 0.40, 0.80, 1.20, 0.40, 0.80, 1.20]
-q = [0.000289293, 0.000676966, 0.00151511, 0.00024744, 0.000571665, 0.00125265, 0.000210111, 0.000472174, 0.00101649]
+a = [0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2, 1.2]
+b = [0.4, 0.4, 0.4, 0.4, 0.4, 0.8, 0.8, 0.8, 0.8, 0.8, 1.2, 1.2, 1.2, 1.2, 1.2, 0.4, 0.4, 0.4, 0.4, 0.4, 0.8, 0.8, 0.8, 0.8, 0.8, 1.2, 1.2, 1.2, 1.2, 1.2, 0.4, 0.4, 0.4, 0.4, 0.4, 0.8, 0.8, 0.8, 0.8, 0.8, 1.2, 1.2, 1.2, 1.2, 1.2]
+q = [0.00024, 0.00028, 0.00032, 0.00036, 0.0004, 0.0004, 0.0006, 0.0008, 0.00089, 0.0011, 0.0013, 0.0015, 0.0017, 0.00192, 0.00215, 0.00020, 0.00023, 0.00028, 0.0003, 0.00036, 0.0005, 0.00055, 0.0006, 0.00075, 0.00080, 0.0011, 0.0012, 0.0014, 0.00158, 0.00165, 0.00016, 0.00018, 0.0002, 0.00025, 0.0003, 0.00038, 0.00045, 0.0005, 0.00055, 0.0006, 0.0007, 0.0008, 0.001, 0.0012, 0.0013]
 
 print("Starting Up")
 time.sleep(0.1) 
@@ -37,6 +37,15 @@ for i in range(startIndex, len(q)):
     time.sleep(3) # Do not update volume
     pyautogui.press('enter')
     time.sleep(5)
+    pyautogui.press('right')
+    time.sleep(0.1)
+    pyautogui.press('enter')
+
+    time.sleep(0.3)
+    pyautogui.moveTo(1530, 578) # Reset Q for volume recomompute regardless of no change
+    time.sleep(0.1)
+    pyautogui.click(button='left')
+    time.sleep(5) # Do not update volume
     pyautogui.press('right')
     time.sleep(0.1)
     pyautogui.press('enter')
@@ -88,7 +97,7 @@ for i in range(startIndex, len(q)):
     pyautogui.press('right')
     time.sleep(0.1)
     pyautogui.press('enter')
-    time.sleep(300)
+    time.sleep(200) # Wait 200 seconds before checking for synthetic map computation
 
     while True: # Check whether map computation finished
         l = list(pyautogui.locateAllOnScreen(img1))
